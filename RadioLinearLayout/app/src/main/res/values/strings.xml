@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RadioLinearLayout</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="Azul">#0000CD</string>
+    <string name="Rojo">#FF0000</string>
+    <string name="Blanco">#FFFFFF</string>
+</resources>
