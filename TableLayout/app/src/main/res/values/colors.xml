@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPorDefecto">#000000</color>
+
+    <color name="colorBlue">#0000FF</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorYellow">#FFFE00</color>
+</resources>
