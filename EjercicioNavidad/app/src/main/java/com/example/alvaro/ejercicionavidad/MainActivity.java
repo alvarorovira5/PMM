@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView imagen;
     Spinner spinner;
     String continenteSelecionado;
-    int idContinente,precioFinal;
+    int idContinente;
+    double precioFinal=0;
 
     private Continentes[] continente =
             {
@@ -51,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        precioFinal=0;
+
+        imagen =(ImageView)findViewById(R.id.imageView);
+
+        registerForContextMenu(imagen);
 
         spinner = (Spinner)findViewById(R.id.spinner);
         //establezco el adaptador al spinner
@@ -103,17 +111,28 @@ public class MainActivity extends AppCompatActivity {
         botonEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                double peso=Integer.valueOf(totalpeso.getText().toString());
+                if (peso <= 5){
+                    precioFinal+=1;
+                }else if (peso>=6 && peso<=10){
+                    precioFinal+=1.5;
+                }else{
+                    precioFinal+=2;
+                }
+
                 Intent i= new Intent(getApplicationContext(),evento.class);
 
                 Bundle datos= new Bundle();
                 datos.putString("datosEnviados",precioFinal+"");
+
                 //le metos al intent los datos
                 i.putExtras(datos);
                 startActivity(i);
             }
         });
     }
-
+    //Menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu,menu);
@@ -137,7 +156,27 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    // array adpater pilla el array he introduce los datos para preparalos.
+    //Menu contextual
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_acercaDe:
+                Intent intentMain = new Intent(MainActivity.this ,acerca_de.class);
+                startActivity(intentMain);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+    // array adapaer pilla el array he introduce los datos para preparalos.
     class AdaptadorContinente extends ArrayAdapter<Continentes>{
         //Pilla el contenido entero de la actividad.
         public Activity context;
