@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner spinner;
     String continenteSelecionado;
     int idContinente;
-    double precioFinal=0;
+    double precioFinal=0.0;
 
     private Continentes[] continente =
             {
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 idContinente = position;
-                precioFinal+= continente[idContinente].getPrecio();
+                precioFinal= continente[idContinente].getPrecio();
                 Toast.makeText(MainActivity.this, continente[idContinente].getNombre() + "", Toast.LENGTH_SHORT).show();
             }
 
@@ -124,7 +124,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent i= new Intent(getApplicationContext(),evento.class);
 
                 Bundle datos= new Bundle();
-                datos.putString("datosEnviados",precioFinal+"");
+                datos.putString("datosEnviados",precioFinal+"€");
+
+                datos.putSerializable("continente",continente[idContinente]);
+
 
                 //le metos al intent los datos
                 i.putExtras(datos);

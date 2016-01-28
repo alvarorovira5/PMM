@@ -93,7 +93,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/cajaRegalo"
-        android:layout_alignEnd="@+id/cajaRegalo" />
+        android:layout_alignEnd="@+id/cajaRegalo"
+        android:inputType="number" />
 
     <Button
         android:layout_width="wrap_content"
