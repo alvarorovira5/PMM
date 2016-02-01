@@ -94,7 +94,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/cajaRegalo"
         android:layout_alignEnd="@+id/cajaRegalo"
-        android:inputType="number" />
+        android:inputType="number"
+        android:text="1" />
 
     <Button
         android:layout_width="wrap_content"
@@ -113,4 +114,16 @@
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="kg"
+        android:id="@+id/textView6"
+        android:layout_alignBottom="@+id/total"
+        android:layout_alignRight="@+id/calcular"
+        android:layout_alignEnd="@+id/calcular"
+        android:layout_marginRight="65dp"
+        android:layout_marginBottom="5dp" />
 </RelativeLayout>

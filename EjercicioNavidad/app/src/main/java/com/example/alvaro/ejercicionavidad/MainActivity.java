@@ -121,10 +121,11 @@ public class MainActivity extends AppCompatActivity {
                     precioFinal+=2;
                 }
 
-                Intent i= new Intent(getApplicationContext(),evento.class);
+                Intent i= new Intent(getApplicationContext(),datosCliente.class);
 
                 Bundle datos= new Bundle();
-                datos.putString("datosEnviados",precioFinal+"€");
+
+                datos.putString("precio",precioFinal+"");
 
                 datos.putSerializable("continente",continente[idContinente]);
 
