@@ -42,9 +42,9 @@ public class datosCliente extends AppCompatActivity {
                 direccion=(EditText)findViewById(R.id.direccion);
 
                 Intent i= new Intent(getApplicationContext(),evento.class);
-                /*
-                Bundle bundleNuevo = new Bundle();
 
+                Bundle bundleNuevo = new Bundle();
+/*
                 bundleNuevo.putString("nombre", nombre.getText().toString());
                 bundleNuevo.putString("apellidos", apellidos.getText().toString());
                 bundleNuevo.putString("telefono", telefono.getText().toString());
@@ -91,6 +91,8 @@ public class datosCliente extends AppCompatActivity {
 
                 //i.putExtras(mybundle);
                 //i.putExtras(bundleNuevo);
+                bundleNuevo.putString("id_Cliente",id_Cliente+"");
+                i.putExtras(bundleNuevo);
                 startActivity(i);
 
             }
