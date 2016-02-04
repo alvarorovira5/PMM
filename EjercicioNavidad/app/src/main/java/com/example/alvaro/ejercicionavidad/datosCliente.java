@@ -42,12 +42,13 @@ public class datosCliente extends AppCompatActivity {
                 direccion=(EditText)findViewById(R.id.direccion);
 
                 Intent i= new Intent(getApplicationContext(),evento.class);
+                /*
                 Bundle bundleNuevo = new Bundle();
 
                 bundleNuevo.putString("nombre", nombre.getText().toString());
                 bundleNuevo.putString("apellidos", apellidos.getText().toString());
                 bundleNuevo.putString("telefono", telefono.getText().toString());
-                bundleNuevo.putString("direccion", direccion.getText().toString());
+                bundleNuevo.putString("direccion", direccion.getText().toString());*/
 
                 //inserto en la TABLA Clientes
 
@@ -87,8 +88,9 @@ public class datosCliente extends AppCompatActivity {
                 zona=cont.getNombre();
                 db.execSQL("INSERT INTO Pedidos (zona,precio,id_Cliente)" +
                         "VALUES ('"+zona+"',"+precio+","+id_Cliente+")");
-                i.putExtras(mybundle);
-                i.putExtras(bundleNuevo);
+
+                //i.putExtras(mybundle);
+                //i.putExtras(bundleNuevo);
                 startActivity(i);
 
             }

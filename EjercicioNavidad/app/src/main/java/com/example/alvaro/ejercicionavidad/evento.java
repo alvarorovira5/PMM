@@ -14,13 +14,13 @@ public class evento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evento);
         //setContentView(R.layout.activity_evento);
-
+        /*
         //recojo los datos enviados desde el mainActivity
         Bundle mybundle= getIntent().getExtras();
 
 
         //recojo el objeto continente
-        Continentes cont=(Continentes)mybundle.getSerializable("continente");
+       Continentes cont=(Continentes)mybundle.getSerializable("continente");
 
         ImageView image= (ImageView) findViewById(R.id.imageView);
         image.setImageResource(cont.getImagen());
@@ -42,6 +42,16 @@ public class evento extends AppCompatActivity {
         direccion.setText(mybundle.getString("direccion"));
         //telefono
         telefono=(TextView)findViewById(R.id.telefono);
-        telefono.setText(mybundle.getString("telefono"));
+        telefono.setText(mybundle.getString("telefono"));*/
+
+        //////////////////////////////////////////////////
+        /////////////////////////////////////////////////
+        // El codigo de arriba sirve para cuando utilizo
+        // el bundle.
+        // Ahora la idea, es mostrar la informacion del
+        // pedido, con un select selecionando el cliente
+        //con su correspondiente pedido.
+        //////////////////////////////////////////////////
+        //////////////////////////////////////////////////
     }
 }
