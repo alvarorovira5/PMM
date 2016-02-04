@@ -23,6 +23,8 @@ public class evento extends AppCompatActivity {
         //recojo el bundle
         final Bundle mybundle = getIntent().getExtras();
         id_Cliente=mybundle.getString("id_Cliente");
+        //recojo el objeto continente
+        Continentes cont=(Continentes)mybundle.getSerializable("continente");
         //Toast.makeText(evento.this, id_Cliente, Toast.LENGTH_SHORT).show();
 
         //setContentView(R.layout.activity_evento);
@@ -31,8 +33,7 @@ public class evento extends AppCompatActivity {
         Bundle mybundle= getIntent().getExtras();
 
 
-        //recojo el objeto continente
-       Continentes cont=(Continentes)mybundle.getSerializable("continente");
+
 
         ImageView image= (ImageView) findViewById(R.id.imageView);
         image.setImageResource(cont.getImagen());
@@ -127,6 +128,10 @@ public class evento extends AppCompatActivity {
         //telefono
         telefono=(TextView)findViewById(R.id.telefono);
         telefono.setText(clientes.getTelefono()+"");
+
+        //imagen
+        ImageView image= (ImageView) findViewById(R.id.imageView);
+        image.setImageResource(cont.getImagen());
 
 
 

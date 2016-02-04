@@ -89,7 +89,8 @@ public class datosCliente extends AppCompatActivity {
                 db.execSQL("INSERT INTO Pedidos (zona,precio,id_Cliente)" +
                         "VALUES ('"+zona+"',"+precio+","+id_Cliente+")");
 
-                //i.putExtras(mybundle);
+                //para enviar la imagen
+                i.putExtras(mybundle);
                 //i.putExtras(bundleNuevo);
                 bundleNuevo.putString("id_Cliente",id_Cliente+"");
                 i.putExtras(bundleNuevo);
