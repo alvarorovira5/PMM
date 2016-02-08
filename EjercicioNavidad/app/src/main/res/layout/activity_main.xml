@@ -94,8 +94,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/cajaRegalo"
         android:layout_alignEnd="@+id/cajaRegalo"
-        android:inputType="number"
-        android:text="1" />
+        android:inputType="number" />
 
     <Button
         android:layout_width="wrap_content"
@@ -105,7 +104,8 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/total"
         android:layout_toEndOf="@+id/total"
-        android:layout_marginBottom="35dp" />
+        android:layout_marginBottom="35dp"
+        android:elegantTextHeight="false" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -113,7 +113,8 @@
         android:id="@+id/spinner"
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:spinnerMode="dialog" />
 
     <TextView
         android:layout_width="wrap_content"
