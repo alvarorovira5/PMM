@@ -1,6 +1,5 @@
 package com.example.alvaro.ejercicionavidad;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +10,7 @@ import android.widget.Toast;
 
 public class evento extends AppCompatActivity {
 
-    TextView texto, nombre, apellidos, direccion, telefono;
+    TextView texto, nombre, apellidos, direccion, telefono,precio;
     Envios_SQLiteHelper envio;
     SQLiteDatabase db;
     String id,id_Cliente;
@@ -105,29 +104,29 @@ public class evento extends AppCompatActivity {
         //despues de esto los muestro.
 
         //Establezco la zona
-        TextView zona= (TextView) findViewById(R.id.zona);
+        TextView zona= (TextView) findViewById(R.id.inputZona);
         zona.setText(pedidos.getZona());
        // Toast.makeText(evento.this, pedidos.getZona(), Toast.LENGTH_SHORT).show();
 
         //Establezco el precio
-        texto= (TextView)findViewById(R.id.datos);
-        texto.setText(pedidos.getPrecio()+"");
+        precio= (TextView)findViewById(R.id.inputPrecio);
+        precio.setText(pedidos.getPrecio()+"");
 
         //Establezco el nombre
-        nombre=(TextView)findViewById(R.id.nombre);
+        nombre=(TextView)findViewById(R.id.inputNombre);
         nombre.setText(clientes.getNombre());
 
         //Establezco los apellidos
-        apellidos=(TextView)findViewById(R.id.apellidos);
+        apellidos=(TextView)findViewById(R.id.inputApellidos);
         apellidos.setText(clientes.getApellidos());
 
         //direccion
-        direccion=(TextView)findViewById(R.id.direccion);
+        direccion=(TextView)findViewById(R.id.inputDireccion);
         direccion.setText(clientes.getDireccion());
 
         //telefono
-        telefono=(TextView)findViewById(R.id.telefono);
-        telefono.setText(clientes.getTelefono()+"");
+        telefono=(TextView)findViewById(R.id.inputTelefono);
+        telefono.setText(String.valueOf(clientes.getTelefono()));
 
         //imagen
         ImageView image= (ImageView) findViewById(R.id.imageView);
