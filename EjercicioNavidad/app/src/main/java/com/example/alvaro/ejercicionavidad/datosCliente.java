@@ -61,7 +61,7 @@ public class datosCliente extends AppCompatActivity {
                 if (nombreI.equals("") || apellidosI.equals("") || direccionI.equals("") || telefonoI.equals("")) {
                     Toast.makeText(datosCliente.this, "Ha dejado algun campo vacio", Toast.LENGTH_LONG).show();
                 } else {
-                    
+
                     db.execSQL("INSERT INTO Clientes (nombre,apellidos,telefono,direccion)" +
                             "VALUES ('" + nombreI + "','" + apellidosI + "','" + telefonoI + "','" + direccionI + "')");
 

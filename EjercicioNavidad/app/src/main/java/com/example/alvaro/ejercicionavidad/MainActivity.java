@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 idContinente = position;
                 precioFinal= continente[idContinente].getPrecio();
                 Toast.makeText(MainActivity.this, continente[idContinente].getNombre() + "", Toast.LENGTH_SHORT).show();
+                cambiarImagen(position);
             }
 
             @Override
@@ -85,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
         cajaRegalo= (CheckBox) findViewById(R.id.cajaRegalo);
         cajaRegalo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -144,6 +147,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void cambiarImagen(int i){
+        ImageView image= (ImageView)findViewById(R.id.imageView);
+        image.setImageResource(continente[i].getImagen());
     }
     //Menu
     @Override
