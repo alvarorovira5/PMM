@@ -116,6 +116,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //pulsar sobre la imagen
+        ImageView imagen= (ImageView)findViewById(R.id.imageView);
+        imagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle miBundle = new Bundle();
+                miBundle.putInt("zona",continente[idContinente].getImagen());
+
+
+                //...
+
+
+            }
+        });
+
         botonEnviar=  (Button) findViewById(R.id.calcular);
 
         botonEnviar.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         precioFinal += 2;
                     }
-
                     Intent i = new Intent(getApplicationContext(), datosCliente.class);
                     Bundle datos = new Bundle();
                     datos.putString("precio", precioFinal + "");
@@ -148,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    //metodo para cambiar imagen del ImageView
     private void cambiarImagen(int i){
         ImageView image= (ImageView)findViewById(R.id.imageView);
         image.setImageResource(continente[i].getImagen());
