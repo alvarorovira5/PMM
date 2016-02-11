@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     Button botonEnviar;
     ImageView imagen;
     Spinner spinner;
+    boolean validarPeso=true;
     String continenteSelecionado;
     int idContinente;
     double precioFinal=0.0;
@@ -117,28 +118,30 @@ public class MainActivity extends AppCompatActivity {
         botonEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //String peso=Integer.valueOf(totalpeso.getText().toString());
+                String peso= totalpeso.getText().toString();
 
-                double peso=Integer.valueOf(totalpeso.getText().toString());
-                if (peso <= 5){
-                    precioFinal+=1;
-                }else if (peso>=6 && peso<=10){
-                    precioFinal+=1.5;
-                }else{
-                    precioFinal+=2;
+                if (peso.equals("")) {
+                    Toast.makeText(MainActivity.this, "Ha dejado el peso vacio", Toast.LENGTH_LONG).show();
+                }else {
+                    Integer.parseInt(peso);
+
+                    if (Integer.parseInt(peso) <= 5) {
+                        precioFinal += 1;
+                    } else if (Integer.parseInt(peso) >= 6 && Integer.parseInt(peso) <= 10) {
+                        precioFinal += 1.5;
+                    } else {
+                        precioFinal += 2;
+                    }
+
+                    Intent i = new Intent(getApplicationContext(), datosCliente.class);
+                    Bundle datos = new Bundle();
+                    datos.putString("precio", precioFinal + "");
+                    datos.putSerializable("continente", continente[idContinente]);
+                    //le metos al intent los datos
+                    i.putExtras(datos);
+                    startActivity(i);
                 }
-
-                Intent i= new Intent(getApplicationContext(),datosCliente.class);
-
-                Bundle datos= new Bundle();
-
-                datos.putString("precio",precioFinal+"");
-
-                datos.putSerializable("continente",continente[idContinente]);
-
-
-                //le metos al intent los datos
-                i.putExtras(datos);
-                startActivity(i);
             }
         });
     }
