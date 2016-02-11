@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class datosCliente extends AppCompatActivity {
     EditText nombre,apellidos,telefono,direccion;
@@ -36,12 +37,12 @@ public class datosCliente extends AppCompatActivity {
         botonEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nombre=(EditText)findViewById(R.id.nombre);
-                apellidos=(EditText)findViewById(R.id.apellidos);
-                telefono=(EditText)findViewById(R.id.telefono);
-                direccion=(EditText)findViewById(R.id.direccion);
+                nombre = (EditText) findViewById(R.id.nombre);
+                apellidos = (EditText) findViewById(R.id.apellidos);
+                telefono = (EditText) findViewById(R.id.telefono);
+                direccion = (EditText) findViewById(R.id.direccion);
 
-                Intent i= new Intent(getApplicationContext(),evento.class);
+                Intent i = new Intent(getApplicationContext(), evento.class);
 
                 Bundle bundleNuevo = new Bundle();
 /*
@@ -52,50 +53,55 @@ public class datosCliente extends AppCompatActivity {
 
                 //inserto en la TABLA Clientes
 
-                nombreI=nombre.getText().toString();
-                apellidosI=apellidos.getText().toString();
-                telefonoI= telefono.getText().toString();
-                direccionI=direccion.getText().toString();
+                nombreI = nombre.getText().toString();
+                apellidosI = apellidos.getText().toString();
+                telefonoI = telefono.getText().toString();
+                direccionI = direccion.getText().toString();
 
-                db.execSQL("INSERT INTO Clientes (nombre,apellidos,telefono,direccion)" +
-                        "VALUES ('" + nombreI + "','" + apellidosI + "','" + telefonoI + "','" + direccionI+"')");
+                if (nombreI.equals("") || apellidosI.equals("") || direccionI.equals("") || telefonoI.equals("")) {
+                    Toast.makeText(datosCliente.this, "Ha dejado algun campo vacio", Toast.LENGTH_LONG).show();
+                } else {
+                    
+                    db.execSQL("INSERT INTO Clientes (nombre,apellidos,telefono,direccion)" +
+                            "VALUES ('" + nombreI + "','" + apellidosI + "','" + telefonoI + "','" + direccionI + "')");
 
-                //inserto en la TABLA Pedidos
-                //string
-                precio=mybundle.getString("precio");
-                //convertir a double
-                Double.parseDouble(precio);
+                    //inserto en la TABLA Pedidos
+                    //string
+                    precio = mybundle.getString("precio");
+                    //convertir a double
+                    Double.parseDouble(precio);
 
-                //HACER UN SELECT PARA EXTRAER EL CLIENTE PARA DESPUES INSERTAR EN LA TABLA PEDIDOS
+                    //HACER UN SELECT PARA EXTRAER EL CLIENTE PARA DESPUES INSERTAR EN LA TABLA PEDIDOS
 
-                Cursor c= db.rawQuery("SELECT id_Cliente " +
-                                        "FROM Clientes "+
-                                         "WHERE telefono = '"+telefonoI+"'",null);
+                    Cursor c = db.rawQuery("SELECT id_Cliente " +
+                            "FROM Clientes " +
+                            "WHERE telefono = '" + telefonoI + "'", null);
 
-                if(c.moveToFirst()){
-                    do{
-                        id=c.getString(0);
-                    }while(c.moveToNext());
+                    if (c.moveToFirst()) {
+                        do {
+                            id = c.getString(0);
+                        } while (c.moveToNext());
+                    }
+                    //idea, al insertar un cliente (con su id (autoincrement)) extraigo su id (con el select de arriba) para insertarla en la
+                    // tabla Pedido para establecer relacion entre ellas.
+
+                    //convierto el id (string) en int
+
+                    id_Cliente = Integer.parseInt(id);
+                    //objeto continente
+                    Continentes cont = (Continentes) mybundle.getSerializable("continente");
+                    zona = cont.getNombre();
+                    db.execSQL("INSERT INTO Pedidos (zona,precio,id_Cliente)" +
+                            "VALUES ('" + zona + "'," + precio + "," + id_Cliente + ")");
+
+                    //para enviar la imagen
+                    i.putExtras(mybundle);
+                    //i.putExtras(bundleNuevo);
+                    bundleNuevo.putString("id_Cliente", id_Cliente + "");
+                    i.putExtras(bundleNuevo);
+                    startActivity(i);
+
                 }
-                //idea, al insertar un cliente (con su id (autoincrement)) extraigo su id (con el select de arriba) para insertarla en la
-                // tabla Pedido para establecer relacion entre ellas.
-
-                //convierto el id (string) en int
-
-                id_Cliente=Integer.parseInt(id);
-                //objeto continente
-                Continentes cont=(Continentes)mybundle.getSerializable("continente");
-                zona=cont.getNombre();
-                db.execSQL("INSERT INTO Pedidos (zona,precio,id_Cliente)" +
-                        "VALUES ('"+zona+"',"+precio+","+id_Cliente+")");
-
-                //para enviar la imagen
-                i.putExtras(mybundle);
-                //i.putExtras(bundleNuevo);
-                bundleNuevo.putString("id_Cliente",id_Cliente+"");
-                i.putExtras(bundleNuevo);
-                startActivity(i);
-
             }
 
         });
