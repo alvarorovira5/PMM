@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //Tratamos los checkBox para Caja Regalo
         cajaRegalo= (CheckBox) findViewById(R.id.cajaRegalo);
         cajaRegalo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 precioFinal += 2;
             }
         });
+        //Tratamos los checkBox para Tarjeta Dedicada.
         tarjetaDedicada= (CheckBox) findViewById(R.id.tarjetaDedicada);
         tarjetaDedicada.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -116,29 +117,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //pulsar sobre la imagen
-        ImageView imagen= (ImageView)findViewById(R.id.imageView);
-        imagen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle miBundle = new Bundle();
-                miBundle.putInt("zona",continente[idContinente].getImagen());
 
-
-                //...
-
-
-            }
-        });
-
+        //seleccionamos el boton enviar
         botonEnviar=  (Button) findViewById(R.id.calcular);
-
+        //asociamos el evento al boton
         botonEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //String peso=Integer.valueOf(totalpeso.getText().toString());
                 String peso= totalpeso.getText().toString();
-
+                //Validación de campo vacio
                 if (peso.equals("")) {
                     Toast.makeText(MainActivity.this, "Ha dejado el peso vacio", Toast.LENGTH_LONG).show();
                 }else {
@@ -151,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         precioFinal += 2;
                     }
+                    // new intent
                     Intent i = new Intent(getApplicationContext(), datosCliente.class);
                     Bundle datos = new Bundle();
                     datos.putString("precio", precioFinal + "");
@@ -162,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    //metodo para cambiar imagen del ImageView
+    //metodo para cambiar imagen del ImageView al seleccionar zona de envio
     private void cambiarImagen(int i){
         ImageView image= (ImageView)findViewById(R.id.imageView);
         image.setImageResource(continente[i].getImagen());
@@ -211,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
                 return super.onContextItemSelected(item);
         }
     }
-    // array adapaer pilla el array he introduce los datos para preparalos.
+    // array adaptaer pilla el array he introduce los datos para preparalos.
     class AdaptadorContinente extends ArrayAdapter<Continentes>{
         //Pilla el contenido entero de la actividad.
         public Activity context;

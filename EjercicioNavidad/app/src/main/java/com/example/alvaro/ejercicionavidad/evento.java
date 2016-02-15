@@ -132,8 +132,5 @@ public class evento extends AppCompatActivity {
         ImageView image= (ImageView) findViewById(R.id.imageView);
         image.setImageResource(cont.getImagen());
 
-
-
-
     }
 }

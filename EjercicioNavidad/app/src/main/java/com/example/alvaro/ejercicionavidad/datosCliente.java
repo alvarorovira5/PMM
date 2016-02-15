@@ -28,15 +28,17 @@ public class datosCliente extends AppCompatActivity {
         //recojo los datos enviados desde el mainActivity
         //precioFinal + continente
         final Bundle mybundle= getIntent().getExtras();
-
+        //selecciono el boton
         botonEnviar = (Button)findViewById(R.id.btnEnviar);
-
+        //llamamos a la bd
         envio= new Envios_SQLiteHelper(this,"Proyecto",null,1);
         db= envio.getWritableDatabase();
 
+        //asociamos el evento al button
         botonEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //selecciono cada elemento
                 nombre = (EditText) findViewById(R.id.nombre);
                 apellidos = (EditText) findViewById(R.id.apellidos);
                 telefono = (EditText) findViewById(R.id.telefono);
@@ -53,19 +55,22 @@ public class datosCliente extends AppCompatActivity {
 
                 //inserto en la TABLA Clientes
 
+                // coger datos para insertar
                 nombreI = nombre.getText().toString();
                 apellidosI = apellidos.getText().toString();
                 telefonoI = telefono.getText().toString();
                 direccionI = direccion.getText().toString();
 
+                //comprobar si están vacios
                 if (nombreI.equals("") || apellidosI.equals("") || direccionI.equals("") || telefonoI.equals("")) {
                     Toast.makeText(datosCliente.this, "Ha dejado algun campo vacio", Toast.LENGTH_LONG).show();
                 } else {
-
+                    //al no estar vacío, inserto en la bd
                     db.execSQL("INSERT INTO Clientes (nombre,apellidos,telefono,direccion)" +
                             "VALUES ('" + nombreI + "','" + apellidosI + "','" + telefonoI + "','" + direccionI + "')");
 
                     //inserto en la TABLA Pedidos
+
                     //string
                     precio = mybundle.getString("precio");
                     //convertir a double
