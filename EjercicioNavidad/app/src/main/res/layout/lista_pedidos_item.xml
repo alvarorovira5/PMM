@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nombre" />
+    <TextView
+        android:id="@+id/zona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="zona" />
+    <TextView
+        android:id="@+id/precio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="precio" />
+    <TextView
+        android:id="@+id/id_cliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="id_Cliente" />
+    <TextView
+        android:id="@+id/id_Pedidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="id_Pedidos" />
+
+</LinearLayout>

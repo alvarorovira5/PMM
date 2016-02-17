@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
-
+    //opciones menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -176,6 +176,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_dibujo:
                 Intent intentMain2 = new Intent(MainActivity.this,dibujo.class);
                 startActivity(intentMain2);
+            case R.id.action_listarPedido:
+                Intent intentMain3 = new Intent(MainActivity.this,listarPedidos.class);
+                startActivity(intentMain3);
             default:
                 return super.onOptionsItemSelected(item);
         }

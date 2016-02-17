@@ -1,9 +1,12 @@
 package com.example.alvaro.ejercicionavidad;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -132,5 +135,27 @@ public class evento extends AppCompatActivity {
         ImageView image= (ImageView) findViewById(R.id.imageView);
         image.setImageResource(cont.getImagen());
 
+    }
+    //Menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu,menu);
+
+
+        return true;
+    }
+    //opciones menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_listarPedido:
+                Intent intentMain = new Intent(evento.this , listarPedidos.class);
+                startActivity(intentMain);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

@@ -18,7 +18,8 @@
         <activity android:name=".evento" />
         <activity android:name=".acerca_de" />
         <activity android:name=".dibujo" />
-        <activity android:name=".datosCliente"></activity>
+        <activity android:name=".datosCliente" />
+        <activity android:name=".listarPedidos"></activity>
     </application>
 
 </manifest>
