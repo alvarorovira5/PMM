@@ -202,6 +202,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent intentMain = new Intent(MainActivity.this ,acerca_de.class);
                 startActivity(intentMain);
                 return true;
+            case R.id.action_dibujo:
+                //Toast.makeText(MainActivity.this, "dibujo", Toast.LENGTH_SHORT).show();
+                Intent intentMain2 = new Intent(MainActivity.this,dibujo.class);
+                startActivity(intentMain2);
+                return true;
+            case R.id.action_listarPedido:
+                Intent intentMain3 = new Intent(MainActivity.this,listarPedidos.class);
+                startActivity(intentMain3);
+                return true;
             default:
                 return super.onContextItemSelected(item);
         }
