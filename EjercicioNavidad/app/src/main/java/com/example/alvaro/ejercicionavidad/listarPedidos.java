@@ -124,8 +124,7 @@ public class listarPedidos extends AppCompatActivity {
 
         String[] idBorrar = new String[]{String.valueOf(id)};
 
-        //SIN ESTO NO HACE EL ON DELETE CASCADE
-       // db.execSQL("PRAGMA foreign_keys = ON");
+
         db.delete("Pedidos", "id_Pedido=?", idBorrar);
         db.close();
         envio.close();

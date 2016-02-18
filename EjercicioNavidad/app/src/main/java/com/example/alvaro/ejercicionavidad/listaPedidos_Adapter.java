@@ -39,19 +39,19 @@ public class listaPedidos_Adapter extends ArrayAdapter {
         // Recogemos el TextView para mostrar el nombre y establecemos el
         // nombre.
         TextView nombre = (TextView) item.findViewById(R.id.nombre);
-        nombre.setText(datos.get(position).getNombre());
+        nombre.setText(datos.get(position).getNombre()+" ");
 
         // zona
         TextView zona = (TextView) item.findViewById(R.id.zona);
-        zona.setText(datos.get(position).getZona());
+        zona.setText(datos.get(position).getZona()+" ");
 
         // precio
         TextView precio = (TextView) item.findViewById(R.id.precio);
-        precio.setText(Float.toString(datos.get(position).getPrecio()));
+        precio.setText(Float.toString(datos.get(position).getPrecio())+" ");
 
         // id_cliente
         TextView id_cliente = (TextView) item.findViewById(R.id.id_cliente);
-        id_cliente.setText(Integer.toString(datos.get(position).getId_Cliente()));
+        id_cliente.setText(Integer.toString(datos.get(position).getId_Cliente())+" ");
 
         // id_pedido
         TextView id_pedido = (TextView) item.findViewById(R.id.id_Pedidos);
