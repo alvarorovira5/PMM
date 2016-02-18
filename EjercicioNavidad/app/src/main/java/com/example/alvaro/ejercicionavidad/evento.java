@@ -139,7 +139,7 @@ public class evento extends AppCompatActivity {
     //Menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu,menu);
+        getMenuInflater().inflate(R.menu.menu_listar,menu);
 
 
         return true;
@@ -149,7 +149,7 @@ public class evento extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.action_listarPedido:
+            case R.id.action_listarPedido2:
                 Intent intentMain = new Intent(evento.this , listarPedidos.class);
                 startActivity(intentMain);
                 return true;
