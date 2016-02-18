@@ -69,6 +69,7 @@ public class listarPedidos extends AppCompatActivity {
         listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             private String idSeleccionado;
 
+            //selecciona lo que hay seleccionado
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position,
                                                   long id, boolean checked) {
@@ -78,13 +79,23 @@ public class listarPedidos extends AppCompatActivity {
                 Toast.makeText(listarPedidos.this, "on item checked", Toast.LENGTH_LONG).show();
 
             }
+            //lo que hara cuando haya algo seleccionado, mostra menu eliminar.
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                // Inflate the menu for the CAB
+                MenuInflater inflater = mode.getMenuInflater();
+                inflater.inflate(R.menu.item_action, menu);
+                return true;
+            }
+            //cuando seleccione algo del menu, lo hara.
             @Override
             public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                 // Respond to clicks on the actions in the CAB
                 switch (item.getItemId()) {
                     case R.id.action_eliminar:
-
+                        //metodo eleminar
                         eliminar(idSeleccionado);
+                        //metodo recargar pag
                         recargar();
                         //showToast("ELIMINAR id: " + idSeleccionado);
                         mode.finish(); // Action picked, so close the CAB
@@ -93,15 +104,6 @@ public class listarPedidos extends AppCompatActivity {
                         return false;
                 }
             }
-
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                // Inflate the menu for the CAB
-                MenuInflater inflater = mode.getMenuInflater();
-                inflater.inflate(R.menu.item_action, menu);
-                return true;
-            }
-
             @Override
             public void onDestroyActionMode(ActionMode mode) {
                 // Here you can make any necessary updates to the activity when
